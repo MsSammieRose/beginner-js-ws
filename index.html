@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <title>Sam's Test Website</title>
+  <script>
+  </script>
+</head>
+
+<body>
+  <h1> YWCA Test Website </h1>
+  <hr>
+  <h2> Show a hidden div </h2>
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <button type="button" name="button" class="btn btn-primary" onclick="document.getElementById('sortingHat').style.display='block'"> Show Me The Hat!</button>
+    </div>
+    <div class="col-md-6" id="sortingHat" style="display:none;">
+      <img src="https://typeset-beta.imgix.net/rehost/2016/9/13/6fe7362a-78fa-4484-933e-5cd0a3215d2f.jpg?w=740&h=444&fit=crop&crop=faces&auto=format&q=70" alt="sorting hat">
+    </div>
+  </div>
+  <br>
+  <h2> Simple API Call </h2>
+  <script>
+    function getHouse() {
+      fetch("https://www.potterapi.com/v1/sortingHat")
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(myJson) {
+          document.getElementById('houseResult').innerHTML = myJson;
+        });
+    }
+  </script>
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <button type="button" name="button" class="btn btn-primary" onclick="getHouse()">Sort Me!</button>
+    </div>
+    <div class="col-md-6">
+      <h3 id="houseResult"></h3>
+    </div>
+  </div>
+</body>
+
+</html>
